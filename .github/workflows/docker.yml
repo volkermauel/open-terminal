@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -36,6 +37,10 @@ jobs:
             file: Dockerfile.openshift
             suffix: "-openshift"
             short_tag: "openshift"
+          - name: desktop
+            file: Dockerfile.desktop
+            suffix: "-desktop"
+            short_tag: "desktop"
     permissions:
       contents: read
       packages: write
@@ -104,6 +109,9 @@ jobs:
           - name: openshift
             suffix: "-openshift"
             short_tag: "openshift"
+          - name: desktop
+            suffix: "-desktop"
+            short_tag: "desktop"
     permissions:
       contents: read
       packages: write
