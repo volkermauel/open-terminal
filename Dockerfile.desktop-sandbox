@@ -85,12 +85,9 @@ RUN printf '%s\n' \
     'esac' > /etc/chromium.d/open-terminal
 
 COPY . .
-# Create a capability-bearing Python copy for the server process only.
-# The system python3 stays clean so user-spawned Python processes remain
-# dumpable (readable via /proc/[pid]/fd/ for port detection).
-RUN pip install --no-cache-dir . \
-    # NOTE: no setcap/python3-ot here — see the header. The console script keeps
-    # its stock interpreter shebang.
+# NOTE: unlike the desktop image there is no setcap/python3-ot copy here — see
+# the header. The console script keeps its stock interpreter shebang.
+RUN pip install --no-cache-dir .
 
 RUN useradd -m -s /bin/bash user && echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
