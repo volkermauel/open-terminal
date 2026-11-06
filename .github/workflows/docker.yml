@@ -41,6 +41,10 @@ jobs:
             file: Dockerfile.desktop
             suffix: "-desktop"
             short_tag: "desktop"
+          - name: desktop-sandbox
+            file: Dockerfile.desktop-sandbox
+            suffix: "-desktop-sandbox"
+            short_tag: "desktop-sandbox"
     permissions:
       contents: read
       packages: write
@@ -112,6 +116,9 @@ jobs:
           - name: desktop
             suffix: "-desktop"
             short_tag: "desktop"
+          - name: desktop-sandbox
+            suffix: "-desktop-sandbox"
+            short_tag: "desktop-sandbox"
     permissions:
       contents: read
       packages: write
